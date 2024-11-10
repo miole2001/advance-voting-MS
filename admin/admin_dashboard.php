@@ -77,11 +77,11 @@
                     <i class='bx bx-calendar-check'></i>
                     <span class="info">
                         <?php
-                        $query = "SELECT * FROM peso_accounts WHERE userType = 'peso_user' ";
-                        $run_query = mysqli_query($connForAccounts, $query);
-                        $row = mysqli_num_rows($run_query);
+                        // $query = "SELECT * FROM peso_accounts WHERE userType = 'peso_user' ";
+                        // $run_query = mysqli_query($connForAccounts, $query);
+                        // $row = mysqli_num_rows($run_query);
 
-                        echo '<h3>' . $row . '</h3>'
+                        // echo '<h3>' . $row . '</h3>'
                         ?>
                         <p>Registered Accounts</p>
                     </span>
@@ -89,11 +89,11 @@
                 <li><i class='bx bx-show-alt'></i>
                     <span class="info">
                         <?php
-                        $query = "SELECT * FROM applicants WHERE status = 'pending' ";
-                        $run_query = mysqli_query($connForPosts, $query);
-                        $row = mysqli_num_rows($run_query);
+                        // $query = "SELECT * FROM applicants WHERE status = 'pending' ";
+                        // $run_query = mysqli_query($connForPosts, $query);
+                        // $row = mysqli_num_rows($run_query);
 
-                        echo '<h3>' . $row . '</h3>'
+                        // echo '<h3>' . $row . '</h3>'
                         ?>
                         <p>Pending Applicants</p>
                     </span>
@@ -101,11 +101,11 @@
                 <li><i class='bx bx-line-chart'></i>
                     <span class="info">
                         <?php
-                        $query = "SELECT * FROM applicants WHERE status = 'approved' ";
-                        $run_query = mysqli_query($connForPosts, $query);
-                        $row = mysqli_num_rows($run_query);
+                        // $query = "SELECT * FROM applicants WHERE status = 'approved' ";
+                        // $run_query = mysqli_query($connForPosts, $query);
+                        // $row = mysqli_num_rows($run_query);
 
-                        echo '<h3>' . $row . '</h3>'
+                        // echo '<h3>' . $row . '</h3>'
                         ?>
                         <p>Approved Applicants</p>
                     </span>
