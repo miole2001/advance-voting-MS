@@ -5,43 +5,6 @@
     
     //database connection
     include("./database/connection.php");
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $profile = $_POST["profile"];
-      $name = $_POST["firstname"];
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      $confirmPassword = $_POST["repeat-password"];
-      $user_type = $_POST["user_type"];
-  
-      // Check if the email already exists using prepared statement
-      $stmt = $connForAccounts->prepare("SELECT * FROM `peso_accounts` WHERE email=? LIMIT 1");
-      $stmt->bind_param("s", $email);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $user = $result->fetch_assoc();
-  
-      if ($user) {
-          // Email exists
-          echo "<script>alert('Email already exists. Please use a different email.');</script>";
-      } else {
-          if ($password === $confirmPassword) {
-              // Insert new user
-              $stmt = $connForAccounts->prepare("INSERT INTO `peso_accounts`(`image`, `name`, `email`, `password`, `userType`) VALUES (?, ?, ?, ?, ?)");
-              $stmt->bind_param("sssss", $profile, $name, $email, $password, $user_type);
-  
-              if ($stmt->execute()) {
-                  header("Location: index.php");
-                  exit(); // Ensure no further code runs
-              } else {
-                  echo "Error: " . $stmt->error;
-              }
-          } else {
-              echo "<script>alert('Passwords do not match');</script>";
-          }
-      }
-  }
-  
 ?>
 <!DOCTYPE html>
 <html lang="en">

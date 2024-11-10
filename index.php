@@ -6,26 +6,6 @@
     //database connection
     include("./database/connection.php");
     
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-    
-        $sql = "SELECT * FROM peso_accounts WHERE email = '$email' AND password = '$password'";
-        $result = mysqli_query($connForAccounts, $sql);
-    
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_array($result);
-    
-            if ($row["userType"] == "peso_user") {
-                $_SESSION['id'] = $row['id'];
-                $_SESSION["email"] = $row['email'];
-                header("location: /peso_system/user/user_dashboard.php");
-            } else {
-                $_SESSION["email"] = $row['email'];
-                header("location: /peso_system/admin/admin_dashboard.php");
-            }
-        } 
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
