@@ -137,7 +137,7 @@
 
 
 
-      <button type="submit">Signup</button>
+      <button type="submit" name="submit">Signup</button>
     </form>
     <p>Already have an Account? <a href="index.php">login</a> </p>
   </div>
