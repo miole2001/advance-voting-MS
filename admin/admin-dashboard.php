@@ -4,7 +4,7 @@
     ini_set('display_errors', 1);
 
     //database connection
-    include("../database/connection.php");
+    include("../connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
-    <title>PESO System | Admin Dashboard Page</title>
+    <title>Voting MS | Admin Dashboard Page</title>
 </head>
 
 <body>
@@ -25,7 +23,7 @@
     <div class="sidebar">
         <a href="admin_dashboard.php" class="logo">
             <i class='bx bx-code-alt'></i>
-            <div class="logo-name"><span>PESO</span>System</div>
+            <div class="logo-name"><span>Voting</span>MS</div>
         </a>
         <ul class="side-menu">
             <li class="active"><a href="admin_dashboard.php"><i class='bx bxs-dashboard'></i>Dashboard</a></li>

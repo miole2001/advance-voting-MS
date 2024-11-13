@@ -4,7 +4,7 @@
     ini_set('display_errors', 1);
 
     //database connection
-    include("../database/connection.php");
+    include("../connection.php");
 
 ?>
 <!DOCTYPE html>
@@ -19,21 +19,21 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.bootstrap5.css">
 
     <link rel="stylesheet" href="../css/user_dashboard.css">
-    <title>PESO System | Job Applied Page</title>
+    <title>Voting MS | Candidates Page</title>
 </head>
 
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="user_dashboard.php" class="logo">
+        <a href="candidates.php" class="logo">
             <i class='bx bx-code-alt'></i>
-            <div class="logo-name"><span>PESO</span>System</div>
+            <div class="logo-name"><span>Voting</span>MS</div>
         </a>
         <ul class="side-menu">
-            <li><a href="user_dashboard.php"><i class='bx bxs-dashboard'></i>Job Lists</a></li>
+            <li><a href="candidates.php" class="active"><i class='bx bxs-dashboard'></i>Candidates</a></li>
             <li><a href="profile.php"><i class='bx bx-cog'></i>My Account</a></li>
-            <li class="active"><a href="job_applied.php"><i class='bx bx-analyse'></i>Job Applied</a></li>
+            <li><a href="job_applied.php"><i class='bx bx-analyse'></i>Job Applied</a></li>
             <li><a href="my_logs.php"><i class='bx bx-cog'></i>My Logs</a></li>
         </ul>
         <ul class="side-menu">
@@ -116,10 +116,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
         </main>
 
     </div>
