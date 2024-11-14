@@ -18,6 +18,3 @@
 
     <!-- Page level custom scripts -->
     <script src="../js/datatables.js"></script>
-
-
-<script src="../js/dashboard.js"></script>
