@@ -1,4 +1,11 @@
-<?php include("../components/user-header.php"); ?>
+<?php 
+    include("../components/user-header.php"); 
+
+    $select_user = $connAccounts->prepare("SELECT * FROM `user_accounts` WHERE id = ? LIMIT 1");
+    $select_user->execute([$user_id]);
+    $user = $select_user->fetch(PDO::FETCH_ASSOC);
+
+?>
 
 
 <!-- Main Content -->
@@ -31,13 +38,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <img src="<?php echo "../image/profile/" . $user['image']; ?>" alt="profile" class="rounded-circle" width="150">
                         <div class="mt-3">
-                            <h4>John Doe</h4>
-                            <p class="text-secondary mb-1">Full Stack Developer</p>
-                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                            <button class="btn btn-primary">Follow</button>
-                            <button class="btn btn-outline-primary">Message</button>
+                            <h4><?php echo ($user['name']); ?></h4>
+                            <p class="text-secondary mb-1"><?php echo ($user['email']); ?></p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                                Launch demo modal
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -51,7 +59,7 @@
                             <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            Kenneth Valdez
+                            <?php echo ($user['name']); ?>
                         </div>
                     </div>
 
@@ -62,7 +70,7 @@
                             <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            fip@jukmuh.al
+                            <?php echo ($user['email']); ?>
                         </div>
                     </div>
 
@@ -70,10 +78,10 @@
                     
                     <div class="row">
                         <div class="col-sm-3">
-                            <h6 class="mb-0">Phone</h6>
+                            <h6 class="mb-0">Gender</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            (239) 816-9029
+                            <?php echo ($user['gender']); ?>
                         </div>
                     </div>
 
@@ -81,34 +89,37 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <h6 class="mb-0">Mobile</h6>
+                            <h6 class="mb-0">Date of Birth</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            (320) 380-4539
+                            <?php echo ($user['date_of_birth']); ?>
                         </div>
                     </div>
 
                     <hr>
-                    
+
                     <div class="row">
                         <div class="col-sm-3">
                             <h6 class="mb-0">Address</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            Bay Area, San Francisco, CA
+                            <?php echo ($user['address']); ?>
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Password</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <?php echo ($user['password']); ?>
                         </div>
                     </div>
 
                     <hr>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-                                Launch demo modal
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

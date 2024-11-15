@@ -1,4 +1,29 @@
-<?php include("../components/admin-header.php"); ?>
+<?php 
+    include("../components/admin-header.php"); 
+
+    // HANDLE DELETE REQUEST
+    if (isset($_POST['delete_account'])) {
+        $delete_id = $_POST['delete_id'];
+        
+        $verify_delete = $connAccounts->prepare("SELECT * FROM `user_accounts` WHERE id = ?");
+        $verify_delete->execute([$delete_id]);
+        
+        if ($verify_delete->rowCount() > 0) {
+            $delete_account = $connAccounts->prepare("DELETE FROM `user_accounts` WHERE id = ?");
+            if ($delete_account->execute([$delete_id])) {
+                $success_msg[] = 'Account deleted!';
+            } else {
+                $error_msg[] = 'Error deleting Account.';
+            }
+        } else {
+            $warning_msg[] = 'Account already deleted!';
+        }
+    }
+
+
+    $voter_accounts = $connAccounts->query("SELECT * FROM `user_accounts` WHERE user_type = 'user'")->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 
 <!-- Main Content -->
@@ -28,65 +53,56 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>#</th>
+                                <th>Profile</th>
                                 <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Date of Birth</th>
+                                <th>Address</th>
+                                <th>Password</th>
+                                <th>Date Registered</th>
+                                <th>Action(s)</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>#</th>
+                                <th>Profile</th>
                                 <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Date of Birth</th>
+                                <th>Address</th>
+                                <th>Password</th>
+                                <th>Date Registered</th>
+                                <th>Action(s)</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Shad Decker</td>
-                                <td>Regional Director</td>
-                                <td>Edinburgh</td>
-                                <td>51</td>
-                                <td>2008/11/13</td>
-                                <td>$183,000</td>
-                            </tr>
-                            <tr>
-                                <td>Michael Bruce</td>
-                                <td>Javascript Developer</td>
-                                <td>Singapore</td>
-                                <td>29</td>
-                                <td>2011/06/27</td>
-                                <td>$183,000</td>
-                            </tr>
-                            <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
-                            </tr>
+                            <?php
+                                $count = 1;
+                                foreach ($voter_accounts as $voter):
+                                ?>
+                                <tr>
+                                    <td><?php echo $count++; ?></td>
+                                    <td><img src="../image/profile/<?php echo ($voter['image']); ?>" alt="Image" style="width: 100px; height: auto;"></td>
+                                    <td><?php echo ($voter['name']); ?></td>
+                                    <td><?php echo ($voter['gender']); ?></td>
+                                    <td><?php echo ($voter['email']); ?></td>
+                                    <td><?php echo ($voter['date_of_birth']); ?></td>
+                                    <td><?php echo ($voter['address']); ?></td>
+                                    <td><?php echo ($voter['password']); ?></td>
+                                    <td><?php echo ($voter['date_registered']); ?></td>
+                                    <td>
+                                        <form method="POST" action="" class="delete-form">
+                                            <input type="hidden" name="delete_id" value="<?php echo ($voter['id']); ?>">
+                                            <input type="hidden" name="delete_account" value="1">
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -112,6 +128,29 @@
 
 <?php include("../components/scripts.php"); ?>
 
+<script>
+        // Delete confirmation
+        $('.delete-btn').on('click', function() {
+            const form = $(this).closest('.delete-form');
+            const reviewId = form.find('input[name="delete_id"]').val();
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log("Deleting voter ID: " + reviewId);
+                    form.submit();
+                }
+            });
+        });
+
+</script>
 </body>
 
 </html>
