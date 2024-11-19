@@ -7,6 +7,7 @@ ini_set('display_errors', 1);
 include("../connection.php");
 
 include("../components/alerts.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,8 @@ include("../components/alerts.php");
     <!-- DATATABLE CDN -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
 </head>
 
@@ -47,7 +50,7 @@ include("../components/alerts.php");
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="candidates.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-thumbs-up"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">AVMS</div>
             </a>
@@ -58,7 +61,7 @@ include("../components/alerts.php");
             <!-- analytics page -->
             <li class="nav-item active">
                 <a class="nav-link" href="candidates.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-user-tie"></i>
                     <span>Candidates</span></a>
             </li>
 
@@ -73,7 +76,7 @@ include("../components/alerts.php");
             <!-- my profile page -->
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-user-circle"></i>
                     <span>My Profile</span>
                 </a>
             </li>
@@ -81,7 +84,7 @@ include("../components/alerts.php");
             <!-- candidates tally page -->
             <li class="nav-item">
                 <a class="nav-link" href="candidate-tally.php">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Candidates Tally</span>
                 </a>
             </li>
@@ -89,7 +92,7 @@ include("../components/alerts.php");
             <!-- vote history page -->
             <li class="nav-item">
                 <a class="nav-link" href="vote-history.php">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-history"></i>
                     <span>Vote History</span>
                 </a>
             </li>
@@ -105,14 +108,14 @@ include("../components/alerts.php");
             <!-- logs page -->
             <li class="nav-item">
                 <a class="nav-link" href="my-logs.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Logs</span></a>
             </li>
 
             <!-- logout -->
             <li class="nav-item">
                 <a class="nav-link" href="#" id="logout">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
 
