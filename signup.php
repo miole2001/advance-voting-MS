@@ -139,7 +139,7 @@
 
       <button type="submit" name="submit">Signup</button>
     </form>
-    <p>Already have an Account? <a href="index.php">login</a> </p>
+    <p>Already have an Account? <a href="login.php">login</a> </p>
   </div>
 </body>
 

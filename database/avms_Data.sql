@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2024 at 09:27 AM
+-- Generation Time: Nov 20, 2024 at 04:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -29,11 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `candidates` (
   `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `candidate_name` varchar(100) NOT NULL,
   `position` varchar(100) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `date_registered` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `image`, `candidate_name`, `position`, `email`, `date_registered`) VALUES
+(1, 'profile2.png', 'Jhon Doe', 'President', 'jhondoe@gmail.com', '2024-11-20 01:54:28');
 
 -- --------------------------------------------------------
 
@@ -48,6 +56,13 @@ CREATE TABLE `voting_records` (
   `candidate_position` varchar(100) NOT NULL,
   `date_voted` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `voting_records`
+--
+
+INSERT INTO `voting_records` (`id`, `voter_name`, `candidate_name`, `candidate_position`, `date_voted`) VALUES
+(1, 'user', 'Jhon Doe', 'President', '2024-11-20 02:59:53');
 
 --
 -- Indexes for dumped tables
@@ -73,13 +88,13 @@ ALTER TABLE `voting_records`
 -- AUTO_INCREMENT for table `candidates`
 --
 ALTER TABLE `candidates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `voting_records`
 --
 ALTER TABLE `voting_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
